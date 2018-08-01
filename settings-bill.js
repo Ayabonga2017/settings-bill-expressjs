@@ -42,7 +42,7 @@ module.exports =function(){
     return callsTotal.toFixed(2);
   }
 
-  function totalset() {
+  function total() {
     return totalCost.toFixed(2);
 
   }
@@ -65,6 +65,14 @@ module.exports =function(){
   }
 
 
+  function settings(){
+    return {
+      smsCost,
+      callCost
+    }
+  }
+
+
   return {
     SmStota,
     setSms,
@@ -73,12 +81,13 @@ module.exports =function(){
 
     Callstota,
     setCall,
-    totalset,
+    total,
 
 
     Critic,
     criticreturn,
     warni,
-    warnireturn
+    warnireturn,
+    settings
   }
-}
+};
