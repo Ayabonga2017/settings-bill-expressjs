@@ -37,12 +37,10 @@ app.post('/settings', function(req, res) {
 
   // get the values from the Factory Function and display them
   var settingValue = {
-
-    sms: factory.getSms(),
     call: factory.getCall(),
+    sms: factory.getSms(),
     warning: factory.getWarning(),
     critical: factory.getCritical()
-
   };
   // process data
   // globalSetings = settings;
@@ -58,46 +56,50 @@ app.post('/action', function(req, res) {
 
   //calculating factory function
   factory.updatesmsandcall(types);
-  factory.smsTotals(types),
-    console.log(types);
-
-    var settingValue = {
-
-      sms: factory.getSms(),
-      call: factory.getCall(),
-      warning: factory.getWarning(),
-      critical: factory.getCritical()
-
-    };
-  let valuesSum = {
-
-    call: factory.callTotals(types),
-    sms: factory.getSms(types),
-    total: factory.total(types),
-    warning: factory.setwarnining(types),
-    critical: factory.setcritical(types)
-
+  //console.log(factory.callTotals());
+  const total = {
+    call: factory.callTotals(),
+    sms: factory.smsTotals(),
+    total: factory.total()
   }
+
+
+
+  var settingValue = {
+    call: factory.getCall(),
+    sms: factory.getSms(),
+    warning: factory.getWarning(),
+    critical: factory.getCritical()
+
+  };
+
+
   // note that data can be sent to the template
   res.render('home', {
-    valuesSum,
-    settings:settingValue
+    settings: settingValue,
+    valuesSum: total
   })
 });
 
 app.get('/settings/:costType', function() {
   let costType = req.params.costType;
-  let cost = 0;
-  //lookup cost for costType
-  if (costType === 'sms') {
-    cost = settings.smsCost;
-  } else if (costType === 'call') {
-    cost = settings.callCost;
-  }
+     console.log(costType);
+     factory.updatesmsandcall(costType);
+
+
+      const total = {
+
+        call: factory.callTotals(),
+        sms: factory.smsTotals(),
+        total: factory.total()
+
+      }
+
   req.render('cost', {
     costType,
-    cost
-  });
+    cost,
+    valuesSum:total
+  })
 });
 
 let PORT = process.env.PORT || 3310;

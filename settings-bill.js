@@ -33,8 +33,9 @@ module.exports = function() {
       }
 
       if (billItemType === "call") {
-        if (totalCost < criticallvl) {
           callsTotal += callCost;
+        if (totalCost < criticallvl) {
+          console.log(callsTotal);
         }
       }
     }
@@ -53,22 +54,23 @@ module.exports = function() {
   }
 
   function getWarning() {
-    return warninglvl;
+    return warninglvl.toFixed(2);
   }
 
   function getCritical() {
-    return criticallvl;
+    return criticallvl.toFixed(2);
   }
 
   function getSms() {
-    return smsCost;
+    return smsCost.toFixed(2);
   }
 
     function getCall() {
-      return callCost;
+      return callCost.toFixed(2);
     }
 
   function callTotals() {
+    console.log(callsTotal);
     return callsTotal.toFixed(2);
   }
 
@@ -82,7 +84,7 @@ module.exports = function() {
     return totalCost.toFixed(2);
   }
 
-  return {
+return {
 
 setSms,
 setCall,
