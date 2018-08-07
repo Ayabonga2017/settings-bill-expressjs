@@ -1,93 +1,100 @@
-module.exports =function(){
+module.exports = function() {
 
-  var smsCost = 1.0;
-  var callCost = 1.5;
-  var callsTotal = 0.00;
-  var smsTotal = 0.00;
-  var totalCost = 0.00;
+  var smsCost = 0;
+  var callCost = 0;
 
-  var warningset = 10.00;
-  var criticV = 20.00;
+  var warninglvl = 0;
+  var criticallvl = 0;
+
+  var smsTotal = 0;
+  var callsTotal = 0;
+  var totalCost = 0;
+
 
   function setSms(value) {
-    if (value !== undefined) {
-      smsCost = value;
-    }
+    smsCost = parseFloat(value);
+
+    return smsCost.toFixed(2);
   }
 
   function setCall(value) {
-    if (value !== undefined) {
-      callCost = value;
-    }
+    callCost = parseFloat(value);
+
+    return callCost.toFixed(2);
   }
 
+  function updatesmsandcall(value) {
 
-  function CountsetingType(value) {
     var billItemType = value;
+
     if (billItemType === "sms") {
-      smsTotal += smsCost;
-    } else if (billItemType === "call") {
-      callsTotal += callCost;
+      if (totalCost < criticallvl) {
+        smsTotal += smsCost;
+      }
 
+      if (billItemType === "call") {
+        if (totalCost < criticallvl) {
+          callsTotal += callCost;
+        }
+      }
     }
-    totalCost = callsTotal + smsTotal;
   }
 
+  function setwarnining(value) {
+    warninglvl = parseFloat(value);
 
-  function SmStota() {
-    return smsTotal.toFixed(2);
+    return warninglvl.toFixed(2);
   }
 
-  function Callstota() {
+  function setcritical(value) {
+    criticallvl = parseFloat(value);
+
+    return criticallvl.toFixed(2);
+  }
+
+  function getWarning() {
+    return warninglvl;
+  }
+
+  function getCritical() {
+    return criticallvl;
+  }
+
+  function getSms() {
+    return smsCost;
+  }
+
+    function getCall() {
+      return callCost;
+    }
+
+  function callTotals() {
     return callsTotal.toFixed(2);
   }
 
+  function smsTotals() {
+    return smsTotal.toFixed(2);
+  }
+
+
   function total() {
+    totalCost = callsTotal + smsTotal;
     return totalCost.toFixed(2);
-
   }
-
-
-  function Critic(criticValue) {
-    criticV = criticValue;
-  }
-
-  function warni(warnme) {
-    warningset = warnme;
-  }
-
-  function warnireturn() {
-    return warningset;
-  }
-
-  function criticreturn() {
-    return criticV;
-  }
-
-
-  function settings(){
-    return {
-      smsCost,
-      callCost
-    }
-  }
-
 
   return {
-    SmStota,
-    setSms,
-    CountsetingType,
 
-
-    Callstota,
-    setCall,
-    total,
-
-
-    Critic,
-    criticreturn,
-    warni,
-    warnireturn,
-    settings
+setSms,
+setCall,
+updatesmsandcall,
+setwarnining,
+setcritical,
+callTotals,
+smsTotals,
+total,
+getWarning,
+getCritical,
+getCall,
+getSms
   }
 };

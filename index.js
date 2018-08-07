@@ -30,27 +30,26 @@ app.post('/settings', function(req, res) {
   var criticalLevel = req.body.criticalLevel;
 
   // use the values in the Factory function
-factory.SmStota(smsCost);
-factory.Callstota(callCost);
-factory.warnireturn(warningLevel);
-factory.criticreturn(criticalLevel);
+  factory.setSms(smsCost);
+  factory.setCall(callCost);
+  factory.setwarnining(warningLevel);
+  factory.setcritical(criticalLevel);
 
   // get the values from the Factory Function and display them
-  var settings = {
+  var settingValue = {
 
-    smsCost,
-    callCost,
-    warningLevel,
-    criticalLevel
+    sms: factory.getSms(),
+    call: factory.getCall(),
+    warning: factory.getWarning(),
+    critical: factory.getCritical()
 
   };
-
   // process data
-  globalSetings = settings;
+  // globalSetings = settings;
 
   // note that data can be sent to the template
   res.render('home', {
-    settings
+    settings: settingValue
   })
 });
 
@@ -58,23 +57,31 @@ app.post('/action', function(req, res) {
   let types = req.body.Billtype;
 
   //calculating factory function
-  factory.CountsetingType(types);
+  factory.updatesmsandcall(types);
+  factory.smsTotals(types),
+    console.log(types);
 
-console.log(types);
+    var settingValue = {
 
-let valuesSum ={
+      sms: factory.getSms(),
+      call: factory.getCall(),
+      warning: factory.getWarning(),
+      critical: factory.getCritical()
 
-  sms : factory.SmStota(types),
-  call :factory.Callstota(types),
-  total :factory.total(types)
+    };
+  let valuesSum = {
 
-}
-  // process data
+    call: factory.callTotals(types),
+    sms: factory.getSms(types),
+    total: factory.total(types),
+    warning: factory.setwarnining(types),
+    critical: factory.setcritical(types)
 
-
+  }
   // note that data can be sent to the template
   res.render('home', {
-valuesSum
+    valuesSum,
+    settings:settingValue
   })
 });
 
