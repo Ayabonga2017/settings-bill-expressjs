@@ -63,8 +63,6 @@ app.post('/action', function(req, res) {
     total: factory.total()
   }
 
-
-
   var settingValue = {
     call: factory.getCall(),
     sms: factory.getSms(),
