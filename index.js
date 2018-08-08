@@ -43,8 +43,6 @@ app.post('/settings', function(req, res) {
     critical: factory.getCritical()
   };
   // process data
-  // globalSetings = settings;
-
   // note that data can be sent to the template
   res.render('home', {
     settings: settingValue
