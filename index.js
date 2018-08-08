@@ -58,7 +58,7 @@ app.post('/action', function(req, res) {
   factory.updatesmsandcall(types);
   //console.log(factory.callTotals());
   const total = {
-    call: factory.callTotals(),
+    call: factory.totalcalls(),
     sms: factory.smsTotals(),
     total: factory.total()
   }

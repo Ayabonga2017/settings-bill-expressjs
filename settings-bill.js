@@ -33,9 +33,9 @@ module.exports = function() {
       }
 
       if (billItemType === "call") {
-          callsTotal += callCost;
         if (totalCost < criticallvl) {
-          console.log(callsTotal);
+
+            callsTotal += callCost;
         }
       }
     }
@@ -69,8 +69,8 @@ module.exports = function() {
       return callCost.toFixed(2);
     }
 
-  function callTotals() {
-    console.log(callsTotal);
+  function totalcalls() {
+
     return callsTotal.toFixed(2);
   }
 
@@ -91,7 +91,7 @@ setCall,
 updatesmsandcall,
 setwarnining,
 setcritical,
-callTotals,
+totalcalls,
 smsTotals,
 total,
 getWarning,
