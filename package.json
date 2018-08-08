@@ -15,5 +15,16 @@
     "moment": "^2.22.2"
   },
   "devDependencies": {},
-  "description": ""
+  "description": "In this document we will explore how to create web applications with [ExpressJS](http://http://expressjs.com/).",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ayabonga2017/settings-bill-expressjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ayabonga2017/settings-bill-expressjs/issues"
+  },
+  "homepage": "https://github.com/Ayabonga2017/settings-bill-expressjs#readme"
 }
