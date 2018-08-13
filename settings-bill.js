@@ -10,7 +10,6 @@ module.exports = function() {
   var callsTotal = 0;
   var totalCost = 0;
 
-
   function setSms(value) {
     smsCost = parseFloat(value);
 
@@ -32,13 +31,12 @@ module.exports = function() {
         smsTotal += smsCost;
       }
     }
-      if (billItemType === "call") {
-        if (totalCost < criticallvl) {
-            callsTotal += callCost;
-        }
+    if (billItemType === "call") {
+      if (totalCost < criticallvl) {
+        callsTotal += callCost;
       }
     }
-
+  }
 
   function setwarnining(value) {
     warninglvl = parseFloat(value);
@@ -64,12 +62,12 @@ module.exports = function() {
     return smsCost.toFixed(2);
   }
 
-    function getCall() {
-      return callCost.toFixed(2);
-    }
+  function getCall() {
+    return callCost.toFixed(2);
+  }
 
   function totaCcalls() {
-console.log(callsTotal);
+    console.log(callsTotal);
     return callsTotal.toFixed(2);
   }
 
@@ -83,19 +81,20 @@ console.log(callsTotal);
     return totalCost.toFixed(2);
   }
 
-return {
+  return {
 
-setSms,
-setCall,
-updatesmsandcall,
-setwarnining,
-setcritical,
-totaCcalls,
-smsTotals,
-total,
-getWarning,
-getCritical,
-getCall,
-getSms
+    setSms,
+    setCall,
+    updatesmsandcall,
+    setwarnining,
+    setcritical,
+    totaCcalls,
+    smsTotals,
+    total,
+    getWarning,
+    getCritical,
+    getCall,
+    getSms
+
   }
 };

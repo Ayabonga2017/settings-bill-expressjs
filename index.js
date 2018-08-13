@@ -79,22 +79,22 @@ app.post('/action', function(req, res) {
 
 app.get('/settings/:costType', function() {
   let costType = req.params.costType;
-     console.log(costType);
-     factory.updatesmsandcall(costType);
+  console.log(costType);
+  factory.updatesmsandcall(costType);
 
 
-      const total = {
+  const total = {
 
-        call: factory.totaCcalls(),
-        sms: factory.smsTotals(),
-        total: factory.total()
+    call: factory.totaCcalls(),
+    sms: factory.smsTotals(),
+    total: factory.total()
 
-      }
+  }
 
   req.render('cost', {
     costType,
     cost,
-    valuesSum:total
+    valuesSum: total
   })
 });
 
