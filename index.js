@@ -41,13 +41,14 @@ app.post('/settings', function(req, res) {
     sms: factory.getSms(),
     warning: factory.getWarning(),
     critical: factory.getCritical()
+
   };
-  let color = factory.setColour();
+
   // process data
   // note that data can be sent to the template
   res.render('home', {
-    settings: settingValue,
-    color
+    settings: settingValue
+
   })
 });
 
@@ -59,11 +60,15 @@ app.post('/action', function(req, res) {
   //calculating factory function
   factory.updatesmsandcall(types);
   //console.log(factory.callTotals());
+
   const total = {
     call: factory.totaCcalls(),
     sms: factory.smsTotals(),
-    total: factory.total()
+    total: factory.total(),
+    color : factory.setColour()
+
   }
+
 
   var settingValue = {
     call: factory.getCall(),
@@ -77,7 +82,8 @@ app.post('/action', function(req, res) {
   // note that data can be sent to the template
   res.render('home', {
     settings: settingValue,
-    valuesSum: total
+    valuesSum: total,
+    
   })
 });
 
@@ -86,12 +92,11 @@ app.get('/settings/:costType', function() {
   console.log(costType);
   factory.updatesmsandcall(costType);
 
-
   const total = {
-
+    total: factory.total(),
     call: factory.totaCcalls(),
     sms: factory.smsTotals(),
-    total: factory.total()
+    color : factory.setColour()
 
   }
 

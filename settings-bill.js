@@ -9,7 +9,7 @@ module.exports = function() {
   var smsTotal = 0;
   var callsTotal = 0;
   var totalCost = 0;
-  var changeColor = '';
+
 
   function setSms(value) {
     smsCost = parseFloat(value);
@@ -41,12 +41,12 @@ module.exports = function() {
 
   function setColour() {
     if (totalCost >= criticallvl) {
-      let changeColor = 'danger'
-      return changeColor;
+
+      return 'danger';
     }
     if (totalCost >= warninglvl) {
-      let changeColor = 'warning'
-      return changeColor;
+
+      return 'warning';
     }
   }
 
