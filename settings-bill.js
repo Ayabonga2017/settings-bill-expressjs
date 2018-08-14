@@ -9,6 +9,7 @@ module.exports = function() {
   var smsTotal = 0;
   var callsTotal = 0;
   var totalCost = 0;
+  var changeColor = '';
 
   function setSms(value) {
     smsCost = parseFloat(value);
@@ -35,6 +36,17 @@ module.exports = function() {
       if (totalCost < criticallvl) {
         callsTotal += callCost;
       }
+    }
+  }
+
+  function setColour() {
+    if (totalCost >= criticallvl) {
+      let changeColor = 'danger'
+      return changeColor;
+    }
+    if (totalCost >= warninglvl) {
+      let changeColor = 'warning'
+      return changeColor;
     }
   }
 
@@ -81,6 +93,8 @@ module.exports = function() {
     return totalCost.toFixed(2);
   }
 
+
+
   return {
 
     setSms,
@@ -94,7 +108,8 @@ module.exports = function() {
     getWarning,
     getCritical,
     getCall,
-    getSms
+    getSms,
+    setColour
 
   }
 };

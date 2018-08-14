@@ -42,12 +42,15 @@ app.post('/settings', function(req, res) {
     warning: factory.getWarning(),
     critical: factory.getCritical()
   };
+  let color = factory.setColour();
   // process data
   // note that data can be sent to the template
   res.render('home', {
     settings: settingValue
   })
 });
+
+
 
 app.post('/action', function(req, res) {
   let types = req.body.Billtype;
