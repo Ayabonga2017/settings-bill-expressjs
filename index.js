@@ -68,8 +68,6 @@ app.post('/action', function(req, res) {
     color : factory.setColour()
 
   }
-
-
   var settingValue = {
     call: factory.getCall(),
     sms: factory.getSms(),
@@ -78,12 +76,11 @@ app.post('/action', function(req, res) {
 
   };
 
-
   // note that data can be sent to the template
   res.render('home', {
     settings: settingValue,
     valuesSum: total,
-    
+
   })
 });
 

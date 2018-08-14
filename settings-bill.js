@@ -10,7 +10,6 @@ module.exports = function() {
   var callsTotal = 0;
   var totalCost = 0;
 
-
   function setSms(value) {
     smsCost = parseFloat(value);
 
