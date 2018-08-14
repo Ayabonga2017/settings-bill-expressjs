@@ -46,7 +46,7 @@ app.post('/settings', function(req, res) {
   // process data
   // note that data can be sent to the template
   res.render('home', {
-    settings: settingValue
+    settings: settingValue,
     color
   })
 });
