@@ -6,7 +6,7 @@ module.exports = function() {
   var warninglvl = 0;
   var criticallvl = 0;
 
-  var smsTotal = 0;
+  var smsTotal = 0.00;
   var callsTotal = 0;
   var totalCost = 0;
 
