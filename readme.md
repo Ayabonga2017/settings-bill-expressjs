@@ -271,3 +271,5 @@ Route name | Action |Description
 ### Deploy the Heroku
 
 Deploy your application to [Heroku](https://www.heroku.com/nodejs).
+# settings-bill-expressjs
+[![Build Status](https://travis-ci.org/Ayabonga2017/settings-bill-expressjs.svg?branch=master)](https://travis-ci.org/Ayabonga2017/settings-bill-expressjs)
