@@ -52,8 +52,6 @@ app.post('/settings', function(req, res) {
   })
 });
 
-
-
 app.post('/action', function(req, res) {
   let types = req.body.Billtype;
 
