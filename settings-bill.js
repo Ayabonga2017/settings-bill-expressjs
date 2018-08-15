@@ -85,6 +85,7 @@ module.exports = function() {
 
 
 
+  
   function setColour() {
     if (totalCost >= criticallvl) {
 
