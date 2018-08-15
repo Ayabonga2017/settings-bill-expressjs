@@ -10,6 +10,8 @@ module.exports = function() {
   var callsTotal = 0;
   var totalCost = 0;
 
+  var actionList = [];
+
   function setSms(value) {
     smsCost = parseFloat(value);
 
@@ -30,13 +32,58 @@ module.exports = function() {
       if (totalCost < criticallvl) {
         smsTotal += smsCost;
       }
+
+      //------FOR TIMESTAMP------
+      actionList.push({
+        //---REMANE THE --"TYPE:"-- TO CALLCOST COZ THATS THE TYPE YOU WANNA KNOW WHEN A USER SELECTS IT!!!-----
+        type: billItemType,
+        cost: smsCost,
+        timestamp: new Date()
+      });
+
     }
+
     if (billItemType === "call") {
       if (totalCost < criticallvl) {
         callsTotal += callCost;
       }
+      //------FOR TIMESTAMP---
+      actionList.push({
+        //---REMANE THE --"TYPE:"-- TO CALLCOST COZ THATS THE TYPE YOU WANNA KNOW WHEN A USER SELECTS IT!!!-----
+        type: billItemType,
+        cost: callCost,
+        timestamp: new Date()
+      });
+
     }
   }
+
+
+  function actions() {
+    return actionList;
+  }
+
+  function actionsFor(type) {
+    const filteredActions = [];
+
+    // loop through all the entries in the action list
+    for (let index = 0; index < actionList.length; index++) {
+      const action = actionList[index];
+      // check this is the type we are doing the total for
+      if (action.type === type) {
+        // add the action to the list
+        filteredActions.push(action);
+      }
+    }
+
+    return filteredActions;
+
+    // return actionList.filter((action) => action.type === type);
+  }
+
+
+
+
 
   function setColour() {
     if (totalCost >= criticallvl) {
@@ -108,7 +155,9 @@ module.exports = function() {
     getCritical,
     getCall,
     getSms,
-    setColour
+    setColour,
+    actions,
+    actionsFor
 
   }
 };

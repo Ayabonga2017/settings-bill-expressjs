@@ -84,25 +84,34 @@ app.post('/action', function(req, res) {
   })
 });
 
-app.get('/settings/:costType', function() {
-  let costType = req.params.costType;
-  console.log(costType);
-  factory.updatesmsandcall(costType);
+// app.get('/settings/:costType', function() {
+//   let costType = req.params.costType;
+//   console.log(costType);
+//   factory.updatesmsandcall(costType);
+//
+//   const total = {
+//     total: factory.total(),
+//     call: factory.totaCcalls(),
+//     sms: factory.smsTotals(),
+//     color : factory.setColour()
+//
+//   }
+//
+//   req.render('cost', {
+//     costType,
+//     cost,
+//     valuesSum: total
+//   })
+// });
 
-  const total = {
-    total: factory.total(),
-    call: factory.totaCcalls(),
-    sms: factory.smsTotals(),
-    color : factory.setColour()
+app.get('/actions', function(req, res){
+  res.render('timestamp', {insertData:factory.actions()})
+})
 
-  }
-
-  req.render('cost', {
-    costType,
-    cost,
-    valuesSum: total
-  })
-});
+app.get('/actions/:type', function(req, res){
+  let variable = req.params.type;
+  res.render('timestamp', {insertData:factory.actionsFor(variable)})
+})
 
 let PORT = process.env.PORT || 3310;
 app.listen(PORT, function() {
