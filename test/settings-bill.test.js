@@ -19,11 +19,13 @@ describe('settings-bill function', function(){
       assert.equal(setwarnining,10.00)
     })
 
-    it('should Return R 30.00 for critical value', function(){
+    it('should Return R 30.00 for the critical value', function(){
+
       var setcritical =settings.setcritical(30.00);
+
       assert.equal(setcritical,30.00)
     })
-    it('should Return warning for critical value', function(){
+    it('should Return warning when it reaches the warning value', function(){
  
       var warningset = Settings();
       warningset.setCall(2.00);
@@ -34,6 +36,20 @@ describe('settings-bill function', function(){
       warningset.updatesmsandcall("call");
 
      assert.equal(warningset.total(),3.00)
+
+    })
+    it('should Return R 15.00 for the total value of sms and call', function(){
+ 
+      var warningset = Settings();
+      warningset.setCall(10.00);
+      warningset.setSms(5.00);
+      warningset.getWarning(20.00);
+      warningset.setcritical(20.00);
+      warningset.setColour("danger");
+      warningset.updatesmsandcall("sms");
+      warningset.updatesmsandcall("call");
+
+     assert.equal(warningset.total(),15.00)
 
     })
 });
