@@ -19,8 +19,21 @@ describe('settings-bill function', function(){
       assert.equal(setwarnining,10.00)
     })
 
-    it('should Return R 40.00 for critical value', function(){
+    it('should Return R 30.00 for critical value', function(){
       var setcritical =settings.setcritical(30.00);
       assert.equal(setcritical,30.00)
+    })
+    it('should Return warning for critical value', function(){
+ 
+      var warningset = Settings();
+      warningset.setCall(2.00);
+      warningset.setSms(1.00);
+      warningset.setcritical(20.00);
+      warningset.setColour("warning");
+      warningset.updatesmsandcall("sms");
+      warningset.updatesmsandcall("call");
+
+     assert.equal(warningset.total(),3.00)
+
     })
 });

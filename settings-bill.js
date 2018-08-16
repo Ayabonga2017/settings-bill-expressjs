@@ -137,7 +137,7 @@ module.exports = function() {
 
   function total() {
     totalCost = callsTotal + smsTotal;
-    return totalCost.toFixed(2);
+    return totalCost;
   }
 
 
