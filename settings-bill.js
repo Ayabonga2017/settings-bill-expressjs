@@ -1,3 +1,5 @@
+let Moment = require('moment')
+let moment = Moment()
 module.exports = function() {
 
   var smsCost = 0;
@@ -28,34 +30,46 @@ module.exports = function() {
 
     var billItemType = value;
 
+    let bill = {
+      type: billItemType,
+        cost: value,
+        timestamp: new Date()
+
+    }
+
     if (billItemType === "sms") {
       if (totalCost < criticallvl) {
         smsTotal += smsCost;
+        bill.cost = smsCost
       }
 
       //------FOR TIMESTAMP------
-      actionList.push({
+     // actionList.push({
         //---REMANE THE --"TYPE:"-- TO CALLCOST COZ THATS THE TYPE YOU WANNA KNOW WHEN A USER SELECTS IT!!!-----
-        type: billItemType,
-        cost: smsCost,
-        timestamp: new Date()
-      });
+      //   type: billItemType,
+      //   cost: smsCost,
+      //   timestamp: Moment(new Date()).fromNow()
+      // });
+
 
     }
 
     if (billItemType === "call") {
       if (totalCost < criticallvl) {
         callsTotal += callCost;
+        bill.cost = callCost
       }
       //------FOR TIMESTAMP---
-      actionList.push({
+     // actionList.push({
         //---REMANE THE --"TYPE:"-- TO CALLCOST COZ THATS THE TYPE YOU WANNA KNOW WHEN A USER SELECTS IT!!!-----
-        type: billItemType,
-        cost: callCost,
-        timestamp: new Date()
-      });
+      //   type: billItemType,
+      //   cost: callCost,
+      //   timestamp: Moment(new Date()).fromNow()
+      // });
 
     }
+     actionList.push(bill)
+
   }
 
 
@@ -73,6 +87,7 @@ module.exports = function() {
       if (action.type === type) {
         // add the action to the list
         filteredActions.push(action);
+        
       }
     }
 

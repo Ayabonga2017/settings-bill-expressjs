@@ -4,11 +4,17 @@ const exphbs = require('express-handlebars');
 var bodyParser = require('body-parser');
 let settingFunc = require("./settings-bill");
 let factory = settingFunc();
+let Moment = require('moment')
 
 app.use(express.static('public'));
 app.set('view engine', 'handlebars');
 app.engine('handlebars', exphbs({
-  defaultLayout: 'main'
+  defaultLayout: 'main',
+  helpers : {
+    'changedDate': function() {
+  return Moment(this.timestamp).fromNow();
+  }
+}
 }));
 app.get('/', function(req, res) {
   res.render('home');
