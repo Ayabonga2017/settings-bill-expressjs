@@ -1,5 +1,7 @@
 let assert = require("assert");
+
 const Settings = require('../settings-bill');
+
 let settings =Settings();
 
 describe('settings-bill function', function(){
