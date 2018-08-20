@@ -88,6 +88,11 @@ app.post('/action', function(req, res) {
   })
 });
 
+app.post('/resetBtn', function(req, res) {
+  factory.resetBtn();
+  res.render('home');
+});
+
 // app.get('/settings/:costType', function() {
 //   let costType = req.params.costType;
 //   console.log(costType);

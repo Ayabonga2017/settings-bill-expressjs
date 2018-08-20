@@ -155,6 +155,20 @@ module.exports = function() {
     return totalCost.toFixed(2);
   }
 
+  function resetBtn(){
+
+     smsCost = 0;
+     callCost = 0;
+  
+     warninglvl = 0;
+     criticallvl = 0;
+  
+     smsTotal = 0.00;
+     callsTotal = 0;
+     totalCost = 0;
+  
+     actionList = [];    
+  }
 
 
   return {
@@ -173,7 +187,8 @@ module.exports = function() {
     getSms,
     setColour,
     actions,
-    actionsFor
+    actionsFor,
+    resetBtn
 
   }
 };
