@@ -87,7 +87,7 @@ app.post('/action', function(req, res) {
 
   })
 });
-
+//rest btn 
 app.post('/resetBtn', function(req, res) {
   factory.resetBtn();
   res.render('home');
