@@ -96,10 +96,6 @@ module.exports = function() {
     // return actionList.filter((action) => action.type === type);
   }
 
-
-
-
-
   
   function setColour() {
     if (totalCost >= criticallvl) {

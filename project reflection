@@ -1,0 +1,16 @@
+I learnt how to setup handlebars.
+I learnt how to configure express-handlebars module.  
+learnt how to render a template. 
+I learnt how to setup a sever.
+I learnt how to create a simple Web Server using JavaScript.
+ I learnt how to setup my own port number.
+I learnt how to run  the  my  web application using localhost with my own port number.
+ I learnt how to stop  the server instance by pressing Ctrl-C in the terminal. 
+I learnt how to  install nodemon so that my web application can be updated automatically without me refreshing every time i make changes to the application.
+I learnt how to  install handlebars template to support my  ExpressJS.
+I learnt how to  install body-parse  to process HTML Data sent to the server.
+Using express.static to serve static files such as images, CSS files, and JavaScript files.
+I learnt how to setup HandlebarsJS .
+I learnt how to create a POST and GET post routes in ExpressJS .
+I learnt how to create a web application  program that clients can connect to remotely using a Web Browser.
+setting up handlebars. Rendering a template. Using Inbound and Outbound for my severs data. Displaying the timestamps using fromNow and displaying the total cost for all the actions on the screen.	Displaying all the sms or call actions .Displaying a total cost for the selected action.

@@ -50,13 +50,13 @@ app.post('/settings', function(req, res) {
 
   };
 
-  // process data
   // note that data can be sent to the template
   res.render('home', {
     settings: settingValue
 
   })
 });
+
 
 app.post('/action', function(req, res) {
   let types = req.body.Billtype;
@@ -72,6 +72,7 @@ app.post('/action', function(req, res) {
     color : factory.setColour()
 
   }
+
   var settingValue = {
     call: factory.getCall(),
     sms: factory.getSms(),

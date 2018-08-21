@@ -23,11 +23,11 @@
         <h5>Bill type</h5>
         <label class="">
 
-        <input type="radio" name="Billtype" class="billItemTypeWithSettings" value="call">
+        <input type="radio" name="Billtype" step="1.0" class="billItemTypeWithSettings" value="call">
         <span class="label-body">Call</span>
       </label>
         <label class="">
-        <input type="radio" name="Billtype" class="billItemTypeWithSettings" value="sms">
+        <input type="radio" name="Billtype" step="1.0" class="billItemTypeWithSettings" value="sms">
         <span class="label-body" >Sms</span>
       </label>
         <button class="button-primary" type="submit" name="button">Add</button>
@@ -59,7 +59,7 @@
           </tr>
         </table>
     </form>
-    
+
     <form action="/resetBtn" method="post">
 
         <button class="button-primary" type="submit" name="button">Reset</button>
@@ -70,14 +70,14 @@
       <h5>Settings</h5>
       <form class="" action="/settings" method="post">
         <label for="exampleEmailInput">Call Cost</label>
-        <input class="u-full-width callCostSetting" type="number" name="callCost" placeholder="enter call cost" value="{{settings.call}}">
+        <input class="u-full-width callCostSetting" type="number" step="0.1"name="callCost" placeholder="enter call cost" value="{{settings.call}}">
         <label for="exampleEmailInput">Sms Cost</label>
-        <input class="u-full-width callCostSetting" type="number" name="smsCost" placeholder="enter sms cost" value="{{settings.sms}}">
+        <input class="u-full-width callCostSetting" type="number" step="0.1" name="smsCost" placeholder="enter sms cost" value="{{settings.sms}}">
 
         <label for="">Warning Level</label>
-        <input class="u-full-width warningLevelSetting " type="number" name="warningLevel" placeholder="enter warning level" value="{{settings.warning}}">
+        <input class="u-full-width warningLevelSetting " type="number" step="0.1" name="warningLevel" placeholder="enter warning level" value="{{settings.warning}}">
         <label for="">Critical Level</label>
-        <input class="u-full-width criticalLevelSetting" type="number" name="criticalLevel" placeholder="enter critical level" value="{{settings.critical}}">
+        <input class="u-full-width criticalLevelSetting" type="number" step="0.1" name="criticalLevel" placeholder="enter critical level" value="{{settings.critical}}">
         <br>
         <button class="button-primary updateSettings" type="submit">Update settings</button>
       </form>
